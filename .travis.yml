@@ -1,0 +1,29 @@
+language: go
+
+os: linux
+
+arch:
+  - ppc64le
+
+sudo: required
+
+services:
+  - docker
+go:
+  - "1.11.x"
+  - "1.12.x"
+  - "1.13.x" 
+  - "1.13.4"
+env:
+  - VERSION=0.8.3
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install build-essential python3 tar wget
+
+install:
+  - GO111MODULE=off go get golang.org/x/lint/golint
+
+script:
+  - python3 ftp_version.py
+  - bash build.sh
