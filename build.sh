@@ -18,8 +18,6 @@ then
     echo "BUILDING"
     make
     
-    echo "pwd"
-    pwd
     echo "ls -la"
     ls -la
 
@@ -31,16 +29,20 @@ then
     mv matchbox matchbox-$version
     
     echo "MOVING BINARY"
-    # if [[ $github_version > $ftp_version ]]
+    lftp -c "open -u $FTP_USER,$FTP_PASSWORD ftp://oplab9.parqtec.unicamp.br; put -O /ppc64el/matchbox matchbox-$version"
+fi
+
+
+#deleting if necessary
+# if [[ $github_version > $ftp_version ]]
     # then
     #     #lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O /test/marcelo/rclone/latest rclone-$github_version"
     #     #lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; rm /test/marcelo/rclone/latest/rclone-$ftp_version"
     # fi
-    lftp -c "open -u $FTP_USER,$FTP_PASSWORD ftp://oplab9.parqtec.unicamp.br; put -O /ppc64el/matchbox matchbox-$version"
+    #lftp -c "open -u $FTP_USER,$FTP_PASSWORD ftp://oplab9.parqtec.unicamp.br; put -O /ppc64el/matchbox matchbox-$version"
     #lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; rm /ppc64el/rclone-$del_version"
 
     # lftp -c "open -u $USER,$PASS $addr; cd $path; mv rclone-$ftp_version ../"
 
     # mv rclone rclone-$github_version
     # lftp -c "open -u $USER,$PASS $addr; cd $path; put rclone-$github_version"
-fi
