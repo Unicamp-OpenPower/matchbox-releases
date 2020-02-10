@@ -15,9 +15,6 @@ then
     echo "cd"
     cd matchbox
 
-    echo "mv"
-    mv matchbox matchbox-$version
-    
     echo "BUILDING"
     make
     
@@ -28,6 +25,10 @@ then
 
     echo "version"
     ./bin/matchbox -version
+
+    echo "Getting BINARY"
+    cd bin
+    mv matchbox matchbox-$version
     
     echo "MOVING BINARY"
     # if [[ $github_version > $ftp_version ]]
