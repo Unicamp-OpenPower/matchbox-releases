@@ -19,7 +19,7 @@ env:
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get install build-essential python3 tar wget
+  - sudo apt-get install build-essential python3 tar wget lftp
 
 install:
   - GO111MODULE=off go get golang.org/x/lint/golint
