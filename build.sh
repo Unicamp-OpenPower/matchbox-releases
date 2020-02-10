@@ -24,7 +24,7 @@ then
     echo "version"
     ./bin/matchbox -version
 
-    echo "Getting BINARY"
+    echo "Getting BINARY inside bin"
     cd bin
     mv matchbox matchbox-$version
     
