@@ -5,7 +5,7 @@ status=$(curl -s --head -w %{http_code} https://oplab9.parqtec.unicamp.br/pub/pp
 
 addr="ftp://oplab9.parqtec.unicamp.br"
 path="/test/marcelo/matchbox/"
-version="v0.8.3"
+#github_version="v0.8.3"
    
 if [ [$status==404] ]
 then
@@ -21,16 +21,20 @@ then
     echo "ls -la"
     ls -la
 
-    echo "version"
-    ./bin/matchbox -version
+    echo "github_version"
+    ./bin/matchbox -github_version
 
     echo "Getting BINARY inside bin"
     cd bin
-    mv matchbox matchbox-$version
+    mv matchbox matchbox-$github_version
     
     echo "MOVING BINARY"
-    lftp -c "open -u $FTP_USER,$FTP_PASSWORD ftp://oplab9.parqtec.unicamp.br; put -O /ppc64el/matchbox matchbox-$version"
-fi
+    if [[ $github_version > $ftp_version ]]
+    then
+        lftp -c "open -u $FTP_USER,$FTP_PASSWORD ftp://oplab9.parqtec.unicamp.br; put -O /ppc64el/matchbox matchbox-$github_version"
+        #lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; rm /test/marcelo/rclone/latest/rclone-$ftp_version"
+    fi
+    fi
 
 
 #deleting if necessary
