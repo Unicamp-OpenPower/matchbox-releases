@@ -22,7 +22,7 @@ then
     ls -la
 
     echo "github_version"
-    ./bin/matchbox -github_version
+    ./bin/matchbox -version
 
     echo "Getting BINARY inside bin"
     cd bin
