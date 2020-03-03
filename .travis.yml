@@ -1,10 +1,6 @@
 language: go
-
 os: linux
-
-arch:
-  - ppc64le
-
+arch: ppc64le
 sudo: required
 
 services:
@@ -27,3 +23,10 @@ install:
 script:
   - python3 ftp_version.py
   - bash build.sh
+ 
+notifications:
+  slack:
+    rooms:
+      - secure: "e6P4TgEJUXVu7sO0zyoaETf/MB18FK0GA2k6X7mr41FAXMd66nMZCWm6eI5aFarfzamwjn5bZdIHQooD8zFVGfkNfFgX2yEWDC6pid44r0XgJR5RPcOMtfrUCQaRBNpvQOoQiXtZ7AMnfvYkWqOKA8Jl0sAHqmBhC8aZq7DHKieLc2HRQdduJRZiBhQlcRFtdO9bAJeX8IZAaEganRK7kYs3ZSD8NVjEsZ+JUECHIcZPQ6cqgCg3k1tAI3MAUVpTAQdchK6zGBT9R3R6UYINuG0Q79J23hUZaH/nzjvn8jtSROYDclW6rdSd+dqDYYYyenhtM6vg4wNuF2jUzlrvVsptXALrhz5kkx78vhPAJ8FVo2OkgbJRwR19lMHVa/nwgpo7TKQyJkAbeIXI8FldZ36dm91KvNqMa0JdN/5afhRjSZur1KEEXv8qIPzDpTDe1ETzZeg0AXIM8lrI7cex8DAvJYJiyVRqG0JWWS5pQPhIKedJ4Nn2qnYwPGzOWL6VUDUJwSk2EMCV/odi0tBPTQFlTE+8nf7YvhFatIwBMwZxJj6nMqoLS4C8J4YVl36zwe6hKfViInle5mIzjYRknX6Tu1JihSUoICpvPudw2NzFjkPxrUuCnmqkAUGhtGgCvnzGqisydJu2AiofX+aH0EmEHih1Xeql8BN6ie9puGo="
+    on_success: change
+    on_failure: change
