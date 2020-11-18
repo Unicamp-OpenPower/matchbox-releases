@@ -31,8 +31,8 @@ then
    sudo ./empacotar-matchbox-rpm.sh matchbox-$github_version $github_version
    if [ $github_version != $ftp_version ]
    then
-      lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O $REPO1 $LOCALPATH/bin/matchbox-$github_version-ppc64le.deb"
-      lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O $REPO2 $ROOTPATH/matchbox-$github_version-1.ppc64le.rpm"
+      lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O $REPO1 $LOCALPATH/bin/poseidon-matchbox-$github_version-ppc64le.deb"
+      sudo lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O $REPO2 $ROOTPATH/matchbox-$github_version-1.ppc64le.rpm"
    fi
    lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; put -O $REMOTEPATH matchbox-$github_version"
    #lftp -c "open -u $USER,$PASS ftp://oplab9.parqtec.unicamp.br; rm $REMOTEPATH/matchbox-$del_version"
