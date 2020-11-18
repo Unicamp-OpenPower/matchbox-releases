@@ -5,7 +5,6 @@ html = str(
            .content)
 index = html.find('Release v')
 github_version = html[index + 9 :index + 14]
-print("Latest:", github_version)
 file = open('github_version.txt', 'w')
 file.writelines(github_version)
 file.close()
